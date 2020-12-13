@@ -1,0 +1,73 @@
+import java.util.Scanner;
+
+public class codesquad2 {
+	
+	public static void U(char[][] c){
+		char t = c[0][0]; c[0][0] = c[0][1]; c[0][1]= c[0][2]; c[0][2]= t;
+	}
+	public static void R(char[][] c) {
+		char t = c[0][2]; c[0][2]=c[1][2]; c[1][2]=c[2][2]; c[2][2]= t;	
+		}
+		
+	public static void L(char[][] c) {
+			char t = c[2][0]; c[2][0] = c[1][0]; c[1][0]= c[0][0]; c[0][0]= t;
+		}
+		
+	public static void B(char[][] c) {
+			char t= c[2][2]; c[2][2]=c[2][1]; c[2][1]= c[2][0]; c[2][0]= t; 
+		}
+	
+	public	static void printmatrix(char[][] c){ 		
+		for(int i =0; i< c.length; i++) {
+			for(int j =0; j<c.length; j++){
+				System.out.print(c[i][j]+" ");}
+			System.out.print("\n");
+		}	System.out.print("\n");
+		}
+	
+	static void DoSwitch(char[][] c, char k){
+		switch(k){
+	case 'U' : U(c); break;
+	case 'R' : R(c); break; 
+	case 'L' : L(c); break;
+	case 'B' : B(c); break;
+	case 'Q' : System.out.println("Bye~"); System.exit(0);}
+	}
+
+
+	
+	public static void main(String[] args){
+	
+		char[][] matrix = {{'R', 'R', 'W'}, {'G', 'C', 'W'}, {'G', 'B', 'B'}};
+		printmatrix(matrix);
+		
+		Scanner sc = new Scanner(System.in);
+
+		System.out.print("CUBE: ");
+		String key = sc.next(); 
+
+		char[] k = key.toCharArray();
+		
+		int i=0;
+		while(i <key.length() ){
+			if(i+1<key.length() && (k[i+1]=='\u005c\u0027') ) {
+				System.out.printf("%c%c\n",k[i], k[i+1]);
+				DoSwitch(matrix, k[i]);
+				DoSwitch(matrix, k[i]);
+				printmatrix(matrix);
+				i +=2;
+			}
+		
+			else {
+				System.out.println(k[i]);
+				DoSwitch(matrix, k[i]);
+				printmatrix(matrix);
+				i++;
+			}
+
+		}
+		
+		sc.close();
+		
+	}
+}
