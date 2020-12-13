@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class Codesquad1{
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String w = sc.next();
+			char[] word = w.toCharArray();
+		int steps = sc.nextInt();
+		String dir = sc.next();
+		sc.close();
+	
+		while(steps<0)
+			steps += word.length;
+				
+		if(dir.equals("R")||dir.equals("r")){			
+			for(int i = word.length - steps; i<word.length; i++)
+				System.out.print(word[i]);	
+			for(int i =0; i< word.length-steps; i++)
+				System.out.print(word[i]);
+			}
+		
+		if(dir.equals("L")||dir.equals("l")){
+			for(int i = steps; i<word.length; i++)
+				System.out.print(word[i]);
+			for(int i =0; i<steps; i++)
+				System.out.print(word[i]);
+		}	
+	}
+}
