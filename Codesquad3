@@ -1,0 +1,189 @@
+package codesquad;
+
+import java.util.*;
+
+public class Codesquad3 {
+	
+		static char[][] W ={{'W', 'W', 'W'}, {'W', 'W', 'W'}, {'W', 'W', 'W'}};
+		static char[][] O ={{'O', 'O', 'O'}, {'O', 'O', 'O'}, {'O', 'O', 'O'}};
+		static char[][] G ={{'G', 'G', 'G'}, {'G', 'G', 'G'}, {'G', 'G', 'G'}};
+		static char[][] R ={{'R', 'R', 'R'}, {'R', 'R', 'R'}, {'R', 'R', 'R'}};
+		static char[][] B ={{'B', 'B', 'B'}, {'B', 'B', 'B'}, {'B', 'B', 'B'}};
+		static char[][] Y ={{'Y', 'Y', 'Y'}, {'Y', 'Y', 'Y'}, {'Y', 'Y', 'Y'}};
+		
+		public static void F(){
+			char[] T = {O[0][2], O[1][2], O[2][2]};
+			for(int j=0; j<3; j++)
+				O[j][2]= Y[0][j];
+			for(int j=0; j<3; j++) 	
+				Y[0][j] = R[2-j][0];
+			for(int j=0; j<3; j++)
+				R[j][0]= W[2][j];
+			for(int j=0; j<3; j++)
+				W[2][j] = T[2-j];
+		}
+		
+		public static void R() {
+				char[] T = { W[0][2], W[1][2], W[2][2]};
+		for(int j=0; j<3; j++)
+			W[j][2] = G[j][2];
+		for(int j=0; j<3; j++)
+			 G[j][2]= Y[j][2];
+		for(int j=0; j<3; j++)
+			Y[j][2]=B[2-j][0];
+		for(int j=0; j<3; j++)
+			B[j][0] = T[2-j];
+		}
+		
+		public static void U() {
+			char [] T = {O[0][0], O[0][1], O[0][2]};
+			for(int j =0; j<3; j++)
+				O[0][j] = G[0][j];
+			for(int j =0; j<3; j++)
+				G[0][j] = R[0][j];
+			for(int j =0; j<3; j++)
+				R[0][j] = B[0][j];
+			for(int j =0; j<3; j++)
+				B[0][j]= T[j];
+			}
+		
+		public static void L() {
+			char[] T = {Y[0][0], Y[1][0], Y[2][0]};
+			for(int j =0; j<3; j++)
+				Y[j][0] = G[j][0];
+			for(int j =0; j<3; j++)
+				G[j][0]= W[j][0];
+			for(int j =0; j<3; j++)
+				W[j][0] = B[2-j][2];
+			for(int j =0; j<3; j++)
+				B[j][2] = T[2-j];			
+		}
+		
+		public static void B() {
+			char [] T = {W[0][0], W[0][1], W[0][2]};
+			for(int j =0; j<3; j++)
+				W[0][j]=R[j][2];
+			for(int j =0; j<3; j++)
+				R[j][2]=Y[2][2-j];
+			for(int j =0; j<3; j++)
+				Y[2][j]=O[j][0];
+			for(int j =0; j<3; j++)
+				O[j][0]= T[2-j];		
+		}
+		
+		public static void D() {
+			char [] T = {B[2][0], B[2][1], B[2][2]};
+			for(int j =0; j<3; j++)
+				B[2][j]  = R[2][j];
+			for(int j =0; j<3; j++)
+				R[2][j]= G[2][j];
+			for(int j =0; j<3; j++)
+				G[2][j]= O[2][j];
+			for(int j =0; j<3; j++)
+				O[2][j] = T[j];
+ 		}
+		
+		public static void Random(int n){
+			Random rd = new Random();
+			for(int i =0; i< n; i++)
+			switch(rd.nextInt(11)){
+			case 0: F(); System.out.print("F\n"); printcube();
+			case 1: F(); F(); F();  System.out.print("F'\n"); printcube();
+			case 2: R(); 			System.out.print("R\n"); printcube();
+			case 3: R(); R(); R();	System.out.print("R'\n"); printcube();
+			case 4: U();			System.out.print("U\n"); printcube();
+			case 5: U(); U(); U();	System.out.print("U'\n"); printcube();
+			case 6: B();			System.out.print("B\n"); printcube();
+			case 7: B(); B(); B();	System.out.print("B'\n"); printcube();
+			case 8: L();			System.out.print("L\n"); printcube();
+			case 9: L(); L(); L();	System.out.print("L'\n"); printcube();
+			case 10: D();			System.out.print("D\n"); printcube();
+			case 11: D(); D(); D();	System.out.print("D'\n"); printcube();
+			}	
+		}
+
+		public static void DoSwitch(char c){
+			switch(c) {
+			case 'F': F(); break;
+			case 'R': R(); break;
+			case 'U': U(); break;
+			case 'L': L(); break;
+			case 'B': B(); break;
+			case 'D': D(); break;
+
+			}
+		}
+		
+		public static void printrow(char[][] c, int i){
+				System.out.print(c[i][0]+" "+c[i][1]+" "+c[i][2]+"     ");
+		}
+		
+		public	static void printcube(){
+			
+				for(int i=0; i<3; i++){
+				System.out.print("          "); printrow(W, i);
+				System.out.print("\n");
+				}
+				System.out.print("\n");
+				
+				for(int j=0; j<3; j++){
+				printrow(O, j); printrow(G, j); printrow(R, j); printrow(B, j);
+				System.out.print("\n");
+				}
+				System.out.println("");
+				
+				for(int i=0; i<3; i++){
+					System.out.print("          "); printrow(Y, i);
+					System.out.print("\n");
+					}
+					System.out.print("\n");
+		}
+		
+
+		
+	public static void main(String[] args){
+		Scanner sc = new Scanner(System.in); 
+		long startTime = System.currentTimeMillis();
+		printcube();
+		System.out.print("CUBE> ");
+		String input = sc.next();
+			char[] in = input.toCharArray();
+		
+		int i =0; int times =0;
+		while(i<input.length()) {
+			if((i+1<input.length())&&(in[i+1]=='\u005c\u0027')){
+				System.out.printf("%c%c\n", in[i], in[i+1]);
+				DoSwitch(in[i]);
+				DoSwitch(in[i]);
+				DoSwitch(in[i]);
+				printcube();
+				i += 2;
+				times ++;
+			}
+	
+			else if(in[i]=='Q'){
+				System.out.printf("%c\n", in[i]);
+				long estimatedTime = System.currentTimeMillis() - startTime;
+				long Time= estimatedTime/1000;
+				System.out.print("경과시간: "+(Time-Time%60)/60 +" : "+(Time%60)+"\n");
+				System.out.print("조작갯수: "+times+"\n");
+				System.out.println("이용해주셔서 고맙습니다.");
+				i++;
+			}
+			
+			else if(in[i]=='X'){
+				System.out.println("몇번 섞으시겠습니까?");
+				int n = sc.nextInt();
+				Random(n);
+			}
+			
+			else{
+				System.out.printf("%c\n", in[i]);
+				DoSwitch(in[i]);
+				printcube();
+				i++;
+				times ++;
+			}
+			
+	
+}}}
