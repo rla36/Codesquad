@@ -87,18 +87,18 @@ public class Codesquad3 {
 			Random rd = new Random();
 			for(int i =0; i< n; i++)
 			switch(rd.nextInt(11)){
-			case 0: F(); System.out.print("F\n"); printcube();
-			case 1: F(); F(); F();  System.out.print("F'\n"); printcube();
-			case 2: R(); 			System.out.print("R\n"); printcube();
-			case 3: R(); R(); R();	System.out.print("R'\n"); printcube();
-			case 4: U();			System.out.print("U\n"); printcube();
-			case 5: U(); U(); U();	System.out.print("U'\n"); printcube();
-			case 6: B();			System.out.print("B\n"); printcube();
-			case 7: B(); B(); B();	System.out.print("B'\n"); printcube();
-			case 8: L();			System.out.print("L\n"); printcube();
-			case 9: L(); L(); L();	System.out.print("L'\n"); printcube();
-			case 10: D();			System.out.print("D\n"); printcube();
-			case 11: D(); D(); D();	System.out.print("D'\n"); printcube();
+			case 0: F(); System.out.print("F\n"); printcube(); break;
+			case 1: F(); F(); F();  System.out.print("F'\n"); printcube();break;
+			case 2: R(); 			System.out.print("R\n"); printcube(); break;
+			case 3: R(); R(); R();	System.out.print("R'\n"); printcube(); break;
+			case 4: U();			System.out.print("U\n"); printcube(); break;
+			case 5: U(); U(); U();	System.out.print("U'\n"); printcube(); break;
+			case 6: B();			System.out.print("B\n"); printcube(); break;
+			case 7: B(); B(); B();	System.out.print("B'\n"); printcube(); break;
+			case 8: L();			System.out.print("L\n"); printcube(); break;
+			case 9: L(); L(); L();	System.out.print("L'\n"); printcube(); break;
+			case 10: D();			System.out.print("D\n"); printcube(); break; 
+			case 11: D(); D(); D();	System.out.print("D'\n"); printcube(); break;
 			}	
 		}
 
@@ -145,11 +145,13 @@ public class Codesquad3 {
 		Scanner sc = new Scanner(System.in); 
 		long startTime = System.currentTimeMillis();
 		printcube();
+		int times =0;
+		do {
 		System.out.print("CUBE> ");
 		String input = sc.next();
 			char[] in = input.toCharArray();
 		
-		int i =0; int times =0;
+		int i =0; 
 		while(i<input.length()) {
 			if((i+1<input.length())&&(in[i+1]=='\u005c\u0027')){
 				System.out.printf("%c%c\n", in[i], in[i+1]);
@@ -174,7 +176,7 @@ public class Codesquad3 {
 			else if(in[i]=='X'){
 				System.out.println("몇번 섞으시겠습니까?");
 				int n = sc.nextInt();
-				Random(n);
+				Random(n); break;
 			}
 			
 			else{
@@ -184,6 +186,10 @@ public class Codesquad3 {
 				i++;
 				times ++;
 			}
-			
+		
 	
-}}}
+		}
+	
+		}while(true);
+}
+}
